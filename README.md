@@ -12,18 +12,12 @@ import pywhatkit
 from google import genai
 from google.genai import types
 
-# =========================================
-# GLOBAL VARIABLES
-# =========================================
 
 should_stop = False
 is_jarvis_speaking = False
 
 listener = sr.Recognizer()
 
-# =========================================
-# GEMINI CLIENT
-# =========================================
 
 client = genai.Client(
     api_key="YOUR_API_KEY_"
@@ -34,10 +28,10 @@ jarvis_behavior = types.GenerateContentConfig(
     You are Jarvis, a futuristic AI assistant.
 
     Rules:
-    - Speak like a loyal assistant
-    - Call user sir
-    - Keep answers concise
-    - Avoid weird symbols
+     Speak like a loyal assistant
+     Call user sir
+     Keep answers concise
+     Avoid weird symbols
     """
 )
 
@@ -46,9 +40,6 @@ jarvis_brain = client.chats.create(
     config=jarvis_behavior
 )
 
-# =========================================
-# TEXT CLEANUP
-# =========================================
 
 def clean_text_for_speech(text):
 
@@ -74,9 +65,7 @@ def clean_text_for_speech(text):
 
     return " ".join(text.split())
 
-# =========================================
-# INTERRUPT LISTENER
-# =========================================
+
 
 def listen_for_interrupt():
 
@@ -115,9 +104,6 @@ def listen_for_interrupt():
             except:
                 continue
 
-# =========================================
-# SPEAK FUNCTION
-# =========================================
 
 def talk(text):
 
@@ -174,9 +160,6 @@ def talk(text):
 
     is_jarvis_speaking = False
 
-# =========================================
-# TAKE COMMAND
-# =========================================
 
 def take_command():
 
@@ -217,9 +200,7 @@ def take_command():
 
         return ""
 
-# =========================================
-# MAIN JARVIS
-# =========================================
+
 
 def run_jarvis():
 
@@ -414,9 +395,7 @@ def run_jarvis():
 
     return True
 
-# =========================================
-# STARTUP
-# =========================================
+
 
 if __name__ == "__main__":
 
